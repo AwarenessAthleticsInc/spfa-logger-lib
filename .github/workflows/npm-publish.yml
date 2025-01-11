@@ -8,7 +8,7 @@ on:
     types: [created]
 
 jobs:
-  build:
+  install:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,6 +17,13 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: npm i
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
       - run: npm test
 
   publish-npm:
